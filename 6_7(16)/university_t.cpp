@@ -5,9 +5,7 @@ void input_string_field(char * fName, char * field);
 
 void university::setUniversity() {
 	input_string_field("Name", name);
-	gggg
-		gggg
-		ggg
+	input_string_field("Historical name", hName);
 	
 	
 
@@ -24,10 +22,11 @@ void input_string_field(char * fName, char * field) {
 	char * buff = new char[255];
 	while (true) {
 		printf("%s: ", fName);
-		fgets(buff, sizeof(buff), stdin);
-		if (strlen(buff) - 1 == 0) empty_err(fName);
+		fgets(buff,255,stdin);
+		if (strlen(buff)-1 == 0) empty_err(fName);
 		else break;
 	}
-	buff[strlen(buff) - 1] = '\0';
+	buff[strlen(buff)-1] = '\0';
 	strcpy(field, buff);
+	delete(buff);
 }
