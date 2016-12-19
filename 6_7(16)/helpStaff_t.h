@@ -7,7 +7,7 @@
 typedef struct {
 	person_t person;
 	bool edu; // 0 - середня освіта, 1 - вища освіта
-}employee_t;
+} employee_t;
 
 typedef struct {
 	std::vector<employee_t> employeers;

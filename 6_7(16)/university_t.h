@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include "teachingStaff_t.h"
 #include "helpStaff_t.h"
 #include <typeinfo>

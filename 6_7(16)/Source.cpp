@@ -18,7 +18,7 @@ int main(int argc, const char * argv[])
 		university_t u;
 		u.setUniversity();
 
-		printf("Name: %s\nHName: %s",u.name,u.hName);
+		printf("Name: %s\nHName: %s\n",u.name,u.hName);
 
 
 
