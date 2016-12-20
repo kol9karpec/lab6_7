@@ -11,11 +11,12 @@
 
 void empty_err(char * field);
 void input_field(char * fName, char * field);
-void input_field(char * fName, int &field, int minValue, int maxValue);
+int input_field(char * fName, int minValue, int maxValue);
 
 typedef struct {
 	char name[30];
 	char surname[30];
 	int age;
 	void setPerson();
+	char * person_to_str();
 } person_t;

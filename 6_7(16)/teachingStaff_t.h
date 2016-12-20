@@ -22,31 +22,43 @@ static const char *titles[] = { "Professor", "Docent", "SeniorResearchFellow" };
 	SeniorResearchFellow - старший науковий співробітник
 */
 
+academicTitle_t input_title();
+
 struct teachingStaff {
 	std::vector<professor_t> professors;
 	std::vector<docent_t> docents;
 	std::vector<seniorLecturer_t> sLecturers;
 	std::vector<assistant_t> assistants;
 	int count;
+
+	void set_teaching_staff();
 };
 
 struct professor {
 	person_t person;
 	academicTitle_t title;
+	
+	void set_professor();
 };
 
 struct docent {
 	person_t person;
 	academicTitle_t title;
+
+	void set_docent();
 };
 
 struct assistant {
 	person_t person;
 	bool isPhD;
+
+	void set_assistant();
 };
 
 struct seniorLecturer {
 	person_t person;
 	bool isPhD;
+
+	void set_senior_lecturer();
 };
 

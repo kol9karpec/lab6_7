@@ -18,8 +18,6 @@ int main(int argc, const char * argv[])
 		university_t u;
 		u.setUniversity();
 
-		printf("Name: %s\nHName: %s\n",u.name,u.hName);
-
 
 
 		break;
