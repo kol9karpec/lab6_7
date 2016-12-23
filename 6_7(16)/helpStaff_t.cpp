@@ -6,7 +6,7 @@ void employee_t::set_employee() {
 }
 
 void helpStaff_t::set_help_staff() {
-	printf("Enter the names for employeers of help staff: \n");
+	printf("Enter data for employeers from help staff: \n");
 	while (true) {
 		employee_t employee;
 		employee.set_employee();
@@ -21,4 +21,5 @@ void helpStaff_t::set_help_staff() {
 		}
 		if ((choice == 'N') | (choice == 'n')) break;
 	}
+	count = employeers.size();
 }

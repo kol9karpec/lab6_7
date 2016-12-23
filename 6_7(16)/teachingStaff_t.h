@@ -22,8 +22,6 @@ static const char *titles[] = { "Professor", "Docent", "SeniorResearchFellow" };
 	SeniorResearchFellow - старший науковий співробітник
 */
 
-academicTitle_t input_title();
-
 struct teachingStaff {
 	std::vector<professor_t> professors;
 	std::vector<docent_t> docents;

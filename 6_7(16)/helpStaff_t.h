@@ -14,5 +14,7 @@ typedef struct {
 
 typedef struct {
 	std::vector<employee_t> employeers;
+	int count;
+
 	void set_help_staff();
 } helpStaff_t;

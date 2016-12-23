@@ -16,4 +16,5 @@ typedef struct university{
 	helpStaff_t hStaff;
 
 	void setUniversity();
+	char* getUniversity();
 } university_t;
