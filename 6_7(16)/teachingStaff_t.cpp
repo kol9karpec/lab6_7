@@ -64,11 +64,51 @@ void teachingStaff::set() {
 		}
 		if ((choice == 'N') | (choice == 'n')) break;
 	}
+}
 
-	count = professors.size();
-	count += docents.size();
-	count += sLecturers.size();
-	count += assistants.size();
+int teachingStaff::to_bFile(FILE ** file) {
+	if (!vec_to_bFile<professor_t>(file, &professors)) return 0;
+	if (!vec_to_bFile<docent_t>(file, &docents)) return 0;
+	if (!vec_to_bFile<assistant_t>(file, &assistants)) return 0;
+	if (!vec_to_bFile<seniorLecturer_t>(file, &sLecturers)) return 0;
+	return 1;
+}
+
+int teachingStaff::from_bFile(FILE ** file) {
+	if (vec_from_bFile<professor_t>(file, &professors) == NULL) return 0;
+	if (vec_from_bFile<docent_t>(file, &docents) == NULL) return 0;
+	if (vec_from_bFile<assistant_t>(file, &assistants) == NULL) return 0;
+	if (vec_from_bFile<seniorLecturer_t>(file, &sLecturers) == NULL) return 0;
+	return 1;
+}
+
+char * teachingStaff::to_str() {
+	char * result = "";
+	strcat(result, "Professors:\n\t");
+	for each (professor var in professors)
+	{
+		strcat(result, var.to_str());
+		strcat(result, "\n\t");
+	}
+	strcat(result, "Docents:\n\t");
+	for each (docent var in docents)
+	{
+		strcat(result, var.to_str());
+		strcat(result, "\n\t");
+	}
+	strcat(result, "Senior lecturers:\n\t");
+	for each (seniorLecturer var in sLecturers)
+	{
+		strcat(result, var.to_str());
+		strcat(result, "\n\t");
+	}
+	strcat(result, "Assistants:\n\t");
+	for each (assistant var in assistants)
+	{
+		strcat(result, var.to_str());
+		strcat(result, "\n\t");
+	}
+	return result;
 }
 
 void professor::set() {
@@ -140,4 +180,34 @@ void seniorLecturer::set() {
 	if ((choice == 'Y') | (choice == 'y')) isPhD = true;
 	else isPhD = false;
 
+}
+
+char * professor::to_str() {
+	char * result = person.to_str();
+	strcat(result, "\t");
+	strcat(result, titles[title]);
+	return result;
+}
+
+char * docent::to_str() {
+	char * result = person.to_str();
+	strcat(result, "\t");
+	strcat(result, titles[title]);
+	return result;
+}
+
+char * seniorLecturer::to_str() {
+	char * result = person.to_str();
+	strcat(result, "\t");
+	char * buff = isPhD ? "Ph.D." : "-";
+	strcat(result, buff);
+	return result;
+}
+
+char * assistant::to_str() {
+	char * result = person.to_str();
+	strcat(result, "\t");
+	char * buff = isPhD ? "Ph.D." : "-";
+	strcat(result, buff);
+	return result;
 }

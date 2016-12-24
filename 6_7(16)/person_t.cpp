@@ -11,9 +11,9 @@ char * person_t::to_str() {
 		strlen(surname)*sizeof(char) + 7 * sizeof(char);
 	char * result = new char[size];
 	result = name;
-	strcat(result, " ");
+	strcat(result, "\t");
 	strcat(result, surname);
-	strcat(result, " ");
+	strcat(result, "\t");
 	char age_buff[10];
 	_itoa_s(age, age_buff,sizeof(age_buff), 10);
 	strcat(result, age_buff);
@@ -27,7 +27,7 @@ void empty_err(char * field) {
 void input_field(char * fName, char * field) {
 	char * buff = new char[255];
 	while (true) {
-		printf("%s: ", fName);
+		if(fName != "") printf("%s: ", fName);
 		fgets(buff, 255, stdin);
 		if (strlen(buff) - 1 == 0) empty_err(fName);
 		else break;
@@ -40,7 +40,7 @@ void input_field(char * fName, char * field) {
 int input_field(char * fName, int min, int max) {
 	char * buff = new char[6];
 	while (true) {
-		printf("%s: ", fName);
+		if (fName != "") printf("%s: ", fName);
 		fgets(buff, 6, stdin);
 		if (strlen(buff) - 1 == 0) empty_err(fName);
 		else {
@@ -50,7 +50,7 @@ int input_field(char * fName, int min, int max) {
 				delete(buff);
 				return iBuff;
 			}
-			else printf("Please, enter correct data!\n", fName);
+			else printf("Please, enter correct data!\n");
 		}
 	}
 }

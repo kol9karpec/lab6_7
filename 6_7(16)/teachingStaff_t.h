@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "person_t.h"
+#include "vectorio.h"
 
 typedef struct professor professor_t;
 typedef struct docent docent_t;
@@ -22,14 +23,17 @@ static const char *titles[] = { "Professor", "Docent", "SeniorResearchFellow" };
 	SeniorResearchFellow - старший науковий співробітник
 */
 
+
 struct teachingStaff {
 	std::vector<professor_t> professors;
 	std::vector<docent_t> docents;
 	std::vector<seniorLecturer_t> sLecturers;
 	std::vector<assistant_t> assistants;
-	int count;
 
 	void set();
+	int to_bFile(FILE ** file);
+	int from_bFile(FILE ** file);
+	char * to_str();
 };
 
 struct professor {
@@ -37,6 +41,7 @@ struct professor {
 	academicTitle_t title;
 	
 	void set();
+	char * to_str();
 };
 
 struct docent {
@@ -44,6 +49,7 @@ struct docent {
 	academicTitle_t title;
 
 	void set();
+	char * to_str();
 };
 
 struct assistant {
@@ -51,6 +57,7 @@ struct assistant {
 	bool isPhD;
 
 	void set();
+	char * to_str();
 };
 
 struct seniorLecturer {
@@ -58,5 +65,6 @@ struct seniorLecturer {
 	bool isPhD;
 
 	void set();
+	char * to_str();
 };
 
