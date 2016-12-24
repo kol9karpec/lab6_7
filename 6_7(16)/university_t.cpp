@@ -1,14 +1,15 @@
 #include "university_t.h"
 
-void university::setUniversity() {
+void university::set() {
 	input_field("Name", name);
 	input_field("Historical name", hName);
-	hStaff.set_help_staff();
-	tStaff.set_teaching_staff();
+	hStaff.set();
+	tStaff.set();
 	staffCount = hStaff.count + tStaff.count;
 }
 
-char* getUniversity() {
+char* university::to_str() {
+
 
 	return NULL;
 }

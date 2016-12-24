@@ -9,12 +9,14 @@
 typedef struct {
 	person_t person;
 	bool edu; // 0 - середня освіта, 1 - вища освіта
-	void set_employee();
+	void set();
 } employee_t;
 
 typedef struct {
 	std::vector<employee_t> employeers;
 	int count;
 
-	void set_help_staff();
+	void set();
+	int to_bFile(FILE * file);
+	int from_bFile(FILE * file);
 } helpStaff_t;

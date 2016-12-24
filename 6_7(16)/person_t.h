@@ -17,6 +17,8 @@ typedef struct {
 	char name[30];
 	char surname[30];
 	int age;
-	void setPerson();
-	char * person_to_str();
+
+
+	void set();
+	char * to_str();
 } person_t;

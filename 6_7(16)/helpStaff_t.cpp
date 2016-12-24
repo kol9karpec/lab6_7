@@ -1,15 +1,15 @@
 #include "helpStaff_t.h"
 
-void employee_t::set_employee() {
-	person.setPerson();
+void employee_t::set() {
+	person.set();
 	edu = input_field("Education(0 - secondary, 1 - higher)", 0, 1);
 }
 
-void helpStaff_t::set_help_staff() {
+void helpStaff_t::set() {
 	printf("Enter data for employeers from help staff: \n");
 	while (true) {
 		employee_t employee;
-		employee.set_employee();
+		employee.set();
 		employeers.push_back(employee);
 		printf("Do you want to continue?(Y/N): ");
 		char choice;

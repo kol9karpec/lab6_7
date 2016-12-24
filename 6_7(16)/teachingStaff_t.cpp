@@ -1,10 +1,10 @@
 #include "teachingStaff_t.h"
 
-void teachingStaff::set_teaching_staff() {
+void teachingStaff::set() {
 	printf("Enter data for professors: \n");
 	while (true) {
 		professor_t professor;
-		professor.set_professor();
+		professor.set();
 		professors.push_back(professor);
 		printf("Do you want to continue?(Y/N): ");
 		char choice;
@@ -20,7 +20,7 @@ void teachingStaff::set_teaching_staff() {
 	printf("Enter data for docents: \n");
 	while (true) {
 		docent_t docent;
-		docent.set_docent();
+		docent.set();
 		docents.push_back(docent);
 		printf("Do you want to continue?(Y/N): ");
 		char choice;
@@ -36,7 +36,7 @@ void teachingStaff::set_teaching_staff() {
 	printf("Enter data for senior lecturers: \n");
 	while (true) {
 		seniorLecturer sLecturer;
-		sLecturer.set_senior_lecturer();
+		sLecturer.set();
 		sLecturers.push_back(sLecturer);
 		printf("Do you want to continue?(Y/N): ");
 		char choice;
@@ -52,7 +52,7 @@ void teachingStaff::set_teaching_staff() {
 	printf("Enter data for assistants: \n");
 	while (true) {
 		assistant_t assistant;
-		assistant.set_assistant();
+		assistant.set();
 		assistants.push_back(assistant);
 		printf("Do you want to continue?(Y/N): ");
 		char choice;
@@ -71,8 +71,8 @@ void teachingStaff::set_teaching_staff() {
 	count += assistants.size();
 }
 
-void professor::set_professor() {
-	person.setPerson();
+void professor::set() {
+	person.set();
 	printf("Academic title\n1)Professor\n2)Docent\n3)Senior Serearch Fellow\n");
 	int choice = input_field("", 1, 3);
 	switch (choice) {
@@ -92,8 +92,8 @@ void professor::set_professor() {
 	}
 }
 
-void docent::set_docent() {
-	person.setPerson();
+void docent::set() {
+	person.set();
 	printf("Academic title\n1)Professor\n2)Docent\n3)Senior Serearch Fellow\n");
 	int choice = input_field("", 1, 3);
 	switch (choice) {
@@ -113,8 +113,8 @@ void docent::set_docent() {
 	}
 }
 
-void assistant::set_assistant() {
-	person.setPerson();
+void assistant::set() {
+	person.set();
 	printf("Is Ph.D. (Y/N)? ");
 	char choice;
 	while (true) {
@@ -127,8 +127,8 @@ void assistant::set_assistant() {
 	else isPhD = false;
 }
 
-void seniorLecturer::set_senior_lecturer() {
-	person.setPerson();
+void seniorLecturer::set() {
+	person.set();
 	printf("Is Ph.D. (Y/N)? ");
 	char choice;
 	while (true) {

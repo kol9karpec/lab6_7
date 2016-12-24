@@ -15,6 +15,6 @@ typedef struct university{
 	teachingStaff_t tStaff;
 	helpStaff_t hStaff;
 
-	void setUniversity();
-	char* getUniversity();
+	void set();
+	char* to_str();
 } university_t;

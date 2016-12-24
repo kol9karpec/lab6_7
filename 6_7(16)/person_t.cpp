@@ -1,12 +1,12 @@
 #include "person_t.h"
 
-void person_t::setPerson() {
+void person_t::set() {
 	input_field("Name", name);
 	input_field("Surname", surname);
 	age = input_field("Age",15,100);
 }
 
-char * person_t::person_to_str() {
+char * person_t::to_str() {
 	int size = strlen(name)*sizeof(char) +
 		strlen(surname)*sizeof(char) + 7 * sizeof(char);
 	char * result = new char[size];

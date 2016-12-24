@@ -29,34 +29,34 @@ struct teachingStaff {
 	std::vector<assistant_t> assistants;
 	int count;
 
-	void set_teaching_staff();
+	void set();
 };
 
 struct professor {
 	person_t person;
 	academicTitle_t title;
 	
-	void set_professor();
+	void set();
 };
 
 struct docent {
 	person_t person;
 	academicTitle_t title;
 
-	void set_docent();
+	void set();
 };
 
 struct assistant {
 	person_t person;
 	bool isPhD;
 
-	void set_assistant();
+	void set();
 };
 
 struct seniorLecturer {
 	person_t person;
 	bool isPhD;
 
-	void set_senior_lecturer();
+	void set();
 };
 
