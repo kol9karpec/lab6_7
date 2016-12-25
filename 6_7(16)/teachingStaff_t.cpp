@@ -83,28 +83,35 @@ int teachingStaff::from_bFile(FILE ** file) {
 }
 
 char * teachingStaff::to_str() {
-	char * result = "";
-	strcat(result, "Professors:\n\t");
+	int size = 0;
 	for each (professor var in professors)
-	{
+		size += (strlen(var.to_str()) + 4);
+	for each (docent var in docents)
+		size += (strlen(var.to_str()) + 4);
+	for each (seniorLecturer var in sLecturers)
+		size += (strlen(var.to_str()) + 4);
+	for each (assistant var in assistants)
+		size += (strlen(var.to_str()) + 4);
+
+	size += 60;
+	char * result = (char*)malloc(sizeof(char)*size);
+	strcat(result, "Professors:\n\t");
+	for each (professor var in professors) {
 		strcat(result, var.to_str());
 		strcat(result, "\n\t");
 	}
 	strcat(result, "Docents:\n\t");
-	for each (docent var in docents)
-	{
+	for each (docent var in docents)	{
 		strcat(result, var.to_str());
 		strcat(result, "\n\t");
 	}
 	strcat(result, "Senior lecturers:\n\t");
-	for each (seniorLecturer var in sLecturers)
-	{
+	for each (seniorLecturer var in sLecturers)	{
 		strcat(result, var.to_str());
 		strcat(result, "\n\t");
 	}
 	strcat(result, "Assistants:\n\t");
-	for each (assistant var in assistants)
-	{
+	for each (assistant var in assistants)	{
 		strcat(result, var.to_str());
 		strcat(result, "\n\t");
 	}
@@ -192,14 +199,18 @@ char * professor::to_str() {
 }
 
 char * docent::to_str() {
-	char * result = person.to_str();
+	int size = strlen(person.to_str()) + strlen(titles[title]) + 3;
+	char * result = (char *)malloc(sizeof(char)*(++size));
+	strcat(result, person.to_str());
 	strcat(result, "\t");
 	strcat(result, titles[title]);
 	return result;
 }
 
 char * seniorLecturer::to_str() {
-	char * result = person.to_str();
+	int size = strlen(person.to_str()) + 6 + 3;
+	char * result = (char *)malloc(sizeof(char)*(++size));
+	strcat(result, person.to_str());
 	strcat(result, "\t");
 	char * buff = isPhD ? "Ph.D." : "-";
 	strcat(result, buff);
@@ -207,7 +218,9 @@ char * seniorLecturer::to_str() {
 }
 
 char * assistant::to_str() {
-	char * result = person.to_str();
+	int size = strlen(person.to_str()) + 6 + 3;
+	char * result = (char *)malloc(sizeof(char)*(++size));
+	strcat(result, person.to_str());
 	strcat(result, "\t");
 	char * buff = isPhD ? "Ph.D." : "-";
 	strcat(result, buff);
