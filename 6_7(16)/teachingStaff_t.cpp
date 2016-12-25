@@ -183,7 +183,9 @@ void seniorLecturer::set() {
 }
 
 char * professor::to_str() {
-	char * result = person.to_str();
+	int size = strlen(person.to_str()) + strlen(titles[title]) + 3;
+	char * result = (char *)malloc(sizeof(char)*(++size));
+	strcat(result, person.to_str());
 	strcat(result, "\t");
 	strcat(result, titles[title]);
 	return result;

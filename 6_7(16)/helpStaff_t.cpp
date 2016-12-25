@@ -6,7 +6,10 @@ void employee_t::set() {
 }
 
 char * employee_t::to_str() {
-	char * result = person.to_str();
+	char * str_per = person.to_str();
+	int size = strlen(str_per) + 23;
+	char * result = (char *)malloc(sizeof(char)*size);
+	strcpy(result, str_per);
 	strcat(result, "\t");
 	char * education = (edu == 1) ? "higher aducation" : "secondary education";
 	strcat(result, education);
@@ -42,11 +45,15 @@ int helpStaff_t::from_bFile(FILE ** file) {
 }
 
 char * helpStaff_t::to_str() {
-	char * result = "";
-	for each (employee_t var in employeers)
-	{
-		strcat(result, var.to_str());
-		strcat(result, "\n");
+	int size = 0;
+	for each (employee_t var in employeers) {
+		size += strlen(var.to_str());
+		size += 2;
 	}
+	char * result = (char*)malloc(sizeof(char)*(++size));
+	for each (employee_t var in employeers) {
+		strcat(result, var.to_str);
+		strcat(result, "\n");
+	}		
 	return result;
 }
