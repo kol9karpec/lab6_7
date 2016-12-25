@@ -68,8 +68,12 @@ int main(int argc, const char * argv[])
 
 		}
 		else if (!strncmp(command, "out", strlen(command))) {
-			for (unsigned int i = 0; i < db.size(); i++)
-				printf("%s", db[i].to_str());
+			for (unsigned int i = 0; i < db.size(); i++) {
+				char * buff = db[i].to_str();
+				printf("%s", buff);
+				free(buff);
+				buff = NULL;
+			}
 		}
 		else if (!strncmp(command, "exit", strlen(command))) {
 			break;

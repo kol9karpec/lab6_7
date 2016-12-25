@@ -18,16 +18,25 @@ void university::set(FILE ** file) {
 }
 
 char* university::to_str() {
-	char * result = "";
+	int size = strlen(name) + strlen(hName);
+	char * buffTStaff = tStaff.to_str();
+	char * buffHStaff = hStaff.to_str();
+	size += (strlen(buffHStaff) + strlen(buffTStaff) + 1);
+	char * result = (char*)malloc(sizeof(char)*(size+100));
+	result[0] = '\0';
 	strcat(result, "Name:\t");
 	strcat(result, name);
 	strcat(result, "\nHistorical name:\t");
 	strcat(result, hName);
 	strcat(result, "\nTeching staff\n");
-	strcat(result, tStaff.to_str());
+	strcat(result, buffTStaff);
 	strcat(result, "\Help staff\n");
-	strcat(result, hStaff.to_str());
-	return NULL;
+	strcat(result, buffHStaff);
+	free(buffHStaff);
+	buffHStaff = NULL;
+	free(buffTStaff);
+	buffTStaff = NULL;
+	return result;
 }
 
 void university::to_bFile(FILE ** file) {

@@ -9,12 +9,15 @@ char * employee_t::to_str() {
 	char * str_per = person.to_str();
 	int size = strlen(str_per) + 23;
 	char * result = (char *)malloc(sizeof(char)*size);
-	strcpy(result, str_per);
+	result[0] = '\0';
+	strcat(result,str_per);
 	strcat(result, "\t");
 	char * education = (edu == 1) ? "higher aducation" : "secondary education";
 	strcat(result, education);
 	free(str_per);
-	free(education);
+	str_per = NULL;
+	//free(education);
+	education = NULL;
 	return result;
 }
 
@@ -55,11 +58,13 @@ char * helpStaff_t::to_str() {
 		free(buff);
 	}
 	char * result = (char*)malloc(sizeof(char)*(++size));
+	result[0] = '\0';
 	for each (employee_t var in employeers) {
 		char * buff = var.to_str();
 		strcat(result, buff);
 		strcat(result, "\n");
 		free(buff);
+		buff = NULL;
 	}		
 	return result;
 }
