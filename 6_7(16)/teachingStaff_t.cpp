@@ -109,38 +109,50 @@ char * teachingStaff::to_str() {
 		buff = NULL;
 	}
 
-	size += 60;
-	char * result = (char*)malloc(sizeof(char)*size);
+	size += 100;
+	char * result = (char*)malloc(sizeof(char)*(size+600));
 	result[0] = '\0';
-	strcat(result, "Professors:\n\t");
+	strcat(result, "\tProfessors:\n");
+	strcat(result, "\t\tName\t\tSurname\t\tAge\t\tAcademic title\n");
+	strcat(result, "\t\t__________________________________________________________________\n");
 	for each (professor var in professors) {
 		char * buff = var.to_str();
+		strcat(result,"\t\t");
 		strcat(result, buff);
-		strcat(result, "\n\t");
+		strcat(result, "\n");
 		free(buff);
 		buff = NULL;
 	}
-	strcat(result, "Docents:\n\t");
+	strcat(result, "\tDocents:\n");
+	strcat(result, "\t\tName\t\tSurname\t\tAge\t\tAcademic title\n");
+	strcat(result, "\t\t__________________________________________________________________\n");
 	for each (docent var in docents) {
 		char * buff = var.to_str();
+		strcat(result, "\t\t");
 		strcat(result, buff);
-		strcat(result, "\n\t");
+		strcat(result, "\n");
 		free(buff);
 		buff = NULL;
 	}
-	strcat(result, "Senior lecturers:\n\t");
+	strcat(result, "\tSenior lecturers:\n");
+	strcat(result, "\t\tName\t\tSurname\t\tAge\t\tIs Ph.D.\n");
+	strcat(result, "\t\t__________________________________________________________________\n");
 	for each (seniorLecturer var in sLecturers) {
 		char * buff = var.to_str();
+		strcat(result, "\t\t");
 		strcat(result, buff);
-		strcat(result, "\n\t");
+		strcat(result, "\n");
 		free(buff);
 		buff = NULL;
 	}
-	strcat(result, "Assistants:\n\t");
+	strcat(result, "\tAssistants:\n");
+	strcat(result, "\t\tName\t\tSurname\t\tAge\t\tIs Ph.D.\n");
+	strcat(result, "\t\t__________________________________________________________________\n");
 	for each (assistant var in assistants) {
 		char * buff = var.to_str();
+		strcat(result, "\t\t");
 		strcat(result, buff);
-		strcat(result, "\n\t");
+		strcat(result, "\n");
 		free(buff);
 		buff = NULL;
 	}
@@ -226,7 +238,7 @@ char * professor::to_str() {
 	strcat(result, buff);
 	free(buff);
 	buff = NULL;
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	strcat(result, titles[title]);
 	return result;
 }
@@ -239,7 +251,7 @@ char * docent::to_str() {
 	strcat(result, buff);
 	free(buff);
 	buff = NULL;
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	strcat(result, titles[title]);
 	return result;
 }
@@ -252,7 +264,7 @@ char * seniorLecturer::to_str() {
 	strcat(result, buff);
 	free(buff);
 	buff = NULL;
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	char * buff1 = isPhD ? "Ph.D." : "-";
 	strcat(result, buff1);
 	//free(buff1);
@@ -268,7 +280,7 @@ char * assistant::to_str() {
 	strcat(result, buff);
 	free(buff);
 	buff = NULL;
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	char * buff1 = isPhD ? "Ph.D." : "-";
 	strcat(result, buff1);
 	//free(buff1);

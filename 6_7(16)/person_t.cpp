@@ -11,9 +11,9 @@ char * person_t::to_str() {
 	char * result = (char*)malloc(sizeof(char)*size);
 	result[0] = '\0';
 	strcat(result, name);
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	strcat(result, surname);
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	char age_buff[10];
 	_itoa_s(age, age_buff,sizeof(age_buff), 10);
 	strcat(result, age_buff);

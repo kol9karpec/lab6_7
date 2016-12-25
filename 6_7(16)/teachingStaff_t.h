@@ -16,7 +16,7 @@ typedef struct assistant assistant_t;
 typedef struct teachingStaff teachingStaff_t;
 
 enum academicTitle_t { Professor = 0, Docent, SeniorResearchFellow };
-static const char *titles[] = { "Professor", "Docent", "SeniorResearchFellow" };
+static const char *titles[] = { "Professor", "Docent", "Senior Research Fellow" };
 /*
 	Professor - професор
 	Docent - доцент

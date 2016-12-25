@@ -11,7 +11,7 @@ char * employee_t::to_str() {
 	char * result = (char *)malloc(sizeof(char)*size);
 	result[0] = '\0';
 	strcat(result,str_per);
-	strcat(result, "\t");
+	strcat(result, "\t\t");
 	char * education = (edu == 1) ? "higher aducation" : "secondary education";
 	strcat(result, education);
 	free(str_per);
@@ -57,10 +57,13 @@ char * helpStaff_t::to_str() {
 		size += 2;
 		free(buff);
 	}
-	char * result = (char*)malloc(sizeof(char)*(++size));
+	char * result = (char*)malloc(sizeof(char)*(++size+200));
 	result[0] = '\0';
+	strcat(result, "\tName\t\tSurname\t\tAge\t\tAcademic title\n");
+	strcat(result, "\t__________________________________________\n");
 	for each (employee_t var in employeers) {
 		char * buff = var.to_str();
+		strcat(result,"\t");
 		strcat(result, buff);
 		strcat(result, "\n");
 		free(buff);

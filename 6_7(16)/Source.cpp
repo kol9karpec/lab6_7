@@ -65,7 +65,7 @@ int main(int argc, const char * argv[])
 				newU.from_bFile(&file);
 				db.push_back(newU);
 			}
-
+			rewind(file);
 		}
 		else if (!strncmp(command, "out", strlen(command))) {
 			for (unsigned int i = 0; i < db.size(); i++) {
