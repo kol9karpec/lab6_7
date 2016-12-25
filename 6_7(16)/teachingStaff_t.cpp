@@ -84,36 +84,56 @@ int teachingStaff::from_bFile(FILE ** file) {
 
 char * teachingStaff::to_str() {
 	int size = 0;
-	for each (professor var in professors)
-		size += (strlen(var.to_str()) + 4);
-	for each (docent var in docents)
-		size += (strlen(var.to_str()) + 4);
-	for each (seniorLecturer var in sLecturers)
-		size += (strlen(var.to_str()) + 4);
-	for each (assistant var in assistants)
-		size += (strlen(var.to_str()) + 4);
+	for each (professor var in professors) {
+		char * buff = var.to_str();
+		size += (strlen(buff) + 4);
+		free(buff);
+	}
+	for each (docent var in docents) {
+		char * buff = var.to_str();
+		size += (strlen(buff) + 4);
+		free(buff);
+	}
+	for each (seniorLecturer var in sLecturers) {
+		char * buff = var.to_str();
+		size += (strlen(buff) + 4);
+		free(buff);
+	}
+	for each (assistant var in assistants) {
+		char * buff = var.to_str();
+		size += (strlen(buff) + 4);
+		free(buff);
+	}
 
 	size += 60;
 	char * result = (char*)malloc(sizeof(char)*size);
 	strcat(result, "Professors:\n\t");
 	for each (professor var in professors) {
-		strcat(result, var.to_str());
+		char * buff = var.to_str();
+		strcat(result, buff);
 		strcat(result, "\n\t");
+		free(buff);
 	}
 	strcat(result, "Docents:\n\t");
-	for each (docent var in docents)	{
-		strcat(result, var.to_str());
+	for each (docent var in docents) {
+		char * buff = var.to_str();
+		strcat(result, buff);
 		strcat(result, "\n\t");
+		free(buff);
 	}
 	strcat(result, "Senior lecturers:\n\t");
-	for each (seniorLecturer var in sLecturers)	{
-		strcat(result, var.to_str());
+	for each (seniorLecturer var in sLecturers) {
+		char * buff = var.to_str();
+		strcat(result, buff);
 		strcat(result, "\n\t");
+		free(buff);
 	}
 	strcat(result, "Assistants:\n\t");
-	for each (assistant var in assistants)	{
-		strcat(result, var.to_str());
+	for each (assistant var in assistants) {
+		char * buff = var.to_str();
+		strcat(result, buff);
 		strcat(result, "\n\t");
+		free(buff);
 	}
 	return result;
 }
@@ -190,39 +210,49 @@ void seniorLecturer::set() {
 }
 
 char * professor::to_str() {
-	int size = strlen(person.to_str()) + strlen(titles[title]) + 3;
-	char * result = (char *)malloc(sizeof(char)*(++size));
-	strcat(result, person.to_str());
+	char * buff = person.to_str();
+	int size = strlen(buff) + strlen(titles[title]) + 3;
+	char * result = (char *)malloc(sizeof(char)*(++size));	
+	strcat(result, buff);
+	free(buff);
 	strcat(result, "\t");
 	strcat(result, titles[title]);
 	return result;
 }
 
 char * docent::to_str() {
-	int size = strlen(person.to_str()) + strlen(titles[title]) + 3;
-	char * result = (char *)malloc(sizeof(char)*(++size));
-	strcat(result, person.to_str());
+	char * buff = person.to_str();
+	int size = strlen(buff) + strlen(titles[title]) + 3;
+	char * result = (char *)malloc(sizeof(char)*(++size));	
+	strcat(result, buff);
+	free(buff);
 	strcat(result, "\t");
 	strcat(result, titles[title]);
 	return result;
 }
 
 char * seniorLecturer::to_str() {
-	int size = strlen(person.to_str()) + 6 + 3;
+	char * buff = person.to_str();
+	int size = strlen(buff) + 6 + 3;
 	char * result = (char *)malloc(sizeof(char)*(++size));
-	strcat(result, person.to_str());
+	strcat(result, buff);
+	free(buff);
 	strcat(result, "\t");
 	char * buff = isPhD ? "Ph.D." : "-";
 	strcat(result, buff);
+	free(buff);
 	return result;
 }
 
 char * assistant::to_str() {
-	int size = strlen(person.to_str()) + 6 + 3;
+	char * buff = person.to_str();
+	int size = strlen(buff) + 6 + 3;
 	char * result = (char *)malloc(sizeof(char)*(++size));
-	strcat(result, person.to_str());
+	strcat(result, buff);
+	free(buff);
 	strcat(result, "\t");
 	char * buff = isPhD ? "Ph.D." : "-";
 	strcat(result, buff);
+	free(buff);
 	return result;
 }

@@ -13,6 +13,8 @@ char * employee_t::to_str() {
 	strcat(result, "\t");
 	char * education = (edu == 1) ? "higher aducation" : "secondary education";
 	strcat(result, education);
+	free(str_per);
+	free(education);
 	return result;
 }
 
@@ -47,13 +49,17 @@ int helpStaff_t::from_bFile(FILE ** file) {
 char * helpStaff_t::to_str() {
 	int size = 0;
 	for each (employee_t var in employeers) {
-		size += strlen(var.to_str());
+		char * buff = var.to_str();
+		size += strlen(buff);
 		size += 2;
+		free(buff);
 	}
 	char * result = (char*)malloc(sizeof(char)*(++size));
 	for each (employee_t var in employeers) {
-		strcat(result, var.to_str);
+		char * buff = var.to_str();
+		strcat(result, buff);
 		strcat(result, "\n");
+		free(buff);
 	}		
 	return result;
 }

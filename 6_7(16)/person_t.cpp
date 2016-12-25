@@ -7,10 +7,9 @@ void person_t::set() {
 }
 
 char * person_t::to_str() {
-	int size = strlen(name)*sizeof(char) +
-		strlen(surname)*sizeof(char) + 7 * sizeof(char);
-	char * result = new char[size];
-	result = name;
+	int size = strlen(name) + strlen(surname) + 20;
+	char * result = (char*)malloc(sizeof(char)*size);
+	strcat(result, name);
 	strcat(result, "\t");
 	strcat(result, surname);
 	strcat(result, "\t");
