@@ -30,6 +30,7 @@ void input_field(char * fName, char * field) {
 		if(fName != "") printf("%s: ", fName);
 		fgets(buff, 255, stdin);
 		if (strlen(buff) - 1 == 0) empty_err(fName);
+		if (strlen(buff) - 1 > 6) printf("Too much characters!\n");
 		else break;
 	}
 	buff[strlen(buff) - 1] = '\0';

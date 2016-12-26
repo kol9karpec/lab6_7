@@ -4,9 +4,12 @@
 #include "university_t.h"
 #include <string.h>
 #include <vector>
+#include "table.h"
 
-void help_out();
+void menu_help();
+void menu_fopen(FILE ** f);
 bool open_file(FILE ** f, char * mode);
+
 
 int main(int argc, const char * argv[])
 {
@@ -17,23 +20,10 @@ int main(int argc, const char * argv[])
 		char command[10];
 		scanf("%s", command);
 		if (!strncmp(command,"help",strlen(command))) {
-			printf("fopen    -    open database\n");
-			printf("create   -    create database\n");
-			printf("fill     -    create university\n");
-			printf("save     -    export all created to opened file\n");
-			printf("read     -    read data from file\n");
-			printf("out      -    print database on the screen\n");
-			printf("exit     -    quit the application\n");
+			menu_help();
 		}
 		else if (!strncmp(command, "fopen", strlen(command))) {
-			if (!open_file(&file, "rb+")) continue;
-			else {
-				fseek(file, 0, SEEK_END);
-				if (ftell(file) <= 0) {
-					printf("File is empty!\n");
-				}
-				else rewind(file);
-			}
+			menu_fopen(&file);
 		}
 		else if (!strncmp(command, "create", strlen(command))) {
 			if (!open_file(&file, "wb+")) continue;
@@ -75,6 +65,13 @@ int main(int argc, const char * argv[])
 				buff = NULL;
 			}
 		}
+		else if (!strncmp(command, "filter", strlen(command))) {
+			int size;
+			field fields[] = { U_Name , U_H_Name, Staff, Name, Surname, Age, Position, Education };
+			char *** table = init_table(5, fields,db,&size);
+			char * res = table_to_str(table, size,5);
+			printf("%s",res);
+		}
 		else if (!strncmp(command, "exit", strlen(command))) {
 			break;
 		}
@@ -84,9 +81,17 @@ int main(int argc, const char * argv[])
 	return 0;
 }
 
-void help_out() {
-
+void menu_help() {
+	printf("fopen    -    open database\n");
+	printf("create   -    create database\n");
+	printf("fill     -    create university\n");
+	printf("save     -    export all created to opened file\n");
+	printf("read     -    read data from file\n");
+	printf("out      -    print database on the screen\n");
+	printf("filter   -    filter current base\n");
+	printf("exit     -    quit the application\n");
 }
+
 bool open_file(FILE ** f, char * mode) {
 	char file[256];
 	printf("File name: ");
@@ -97,4 +102,18 @@ bool open_file(FILE ** f, char * mode) {
 		return false;
 	}
 	else return true;
+}
+
+void menu_fopen(FILE ** file) {
+	if (!open_file(file, "rb+")) printf("Error reading file!");
+	else {
+		fseek(*file, 0, SEEK_END);
+		if (ftell(*file) <= 0) {
+			printf("File is empty!\n");
+		}
+		else {
+			printf("Successful opening file!");
+			rewind(*file);
+		}
+	}
 }

@@ -12,7 +12,7 @@ char * employee_t::to_str() {
 	result[0] = '\0';
 	strcat(result,str_per);
 	strcat(result, "\t\t");
-	char * education = (edu == 1) ? "higher aducation" : "secondary education";
+	char * education = (edu == 1) ? "higher" : "secondary";
 	strcat(result, education);
 	free(str_per);
 	str_per = NULL;

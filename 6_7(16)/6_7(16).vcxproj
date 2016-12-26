@@ -149,6 +149,7 @@
     <ClCompile Include="helpStaff_t.cpp" />
     <ClCompile Include="person_t.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="table.cpp" />
     <ClCompile Include="teachingStaff_t.cpp" />
     <ClCompile Include="university_t.cpp" />
     <ClCompile Include="vectorio.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="helpStaff_t.h" />
     <ClInclude Include="person_t.h" />
+    <ClInclude Include="table.h" />
     <ClInclude Include="teachingStaff_t.h" />
     <ClInclude Include="university_t.h" />
     <ClInclude Include="vectorio.h" />
