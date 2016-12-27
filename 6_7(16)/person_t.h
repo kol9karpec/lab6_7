@@ -12,6 +12,7 @@
 void empty_err(char * field);
 void input_field(char * fName, char * field);
 int input_field(char * fName, int minValue, int maxValue);
+bool question(char * question);
 
 typedef struct {
 	char name[30];

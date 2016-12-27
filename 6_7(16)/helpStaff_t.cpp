@@ -31,6 +31,7 @@ void helpStaff_t::set() {
 		char choice;
 		while (true) {
 			choice = getchar();
+			getchar();
 			if ((choice == 'Y') | (choice == 'y')) break;
 			else if ((choice == 'N') | (choice == 'n')) break;
 			else printf("Wrong answer!\n");

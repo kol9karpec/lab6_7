@@ -18,3 +18,8 @@ char *** init_table(int fields_count, field * fields,
 char * table_to_str(char *** table, int size, 
 					int fields_count);
 void str_null(char * str);
+
+void sort_table(char *** table, int size,
+				int fields_count,
+				int * order,
+				bool * sort_type);

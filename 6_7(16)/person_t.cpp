@@ -28,9 +28,10 @@ void input_field(char * fName, char * field) {
 	char * buff = new char[255];
 	while (true) {
 		if(fName != "") printf("%s: ", fName);
+		//getchar();
 		fgets(buff, 255, stdin);
 		if (strlen(buff) - 1 == 0) empty_err(fName);
-		if (strlen(buff) - 1 > 6) printf("Too much characters!\n");
+		else if (strlen(buff) - 1 > 6) printf("Too much characters!\n");
 		else break;
 	}
 	buff[strlen(buff) - 1] = '\0';
@@ -53,5 +54,17 @@ int input_field(char * fName, int min, int max) {
 			}
 			else printf("Please, enter correct data!\n");
 		}
+	}
+}
+
+bool question(char * question) {
+	printf("%s(Y/N): ", question);
+	char choice;
+	while (true) {
+		choice = getchar();
+		getchar();
+		if ((choice == 'Y') | (choice == 'y')) return true;
+		else if ((choice == 'N') | (choice == 'n')) return false;
+		else printf("Wrong answer!\n");
 	}
 }

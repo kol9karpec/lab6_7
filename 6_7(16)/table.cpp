@@ -163,3 +163,47 @@ char * table_to_str(char *** table, int size, int fields_count) {
 	}
 	return result;
 }
+
+void sort_table(char *** table, int size,
+	int fields_count,
+	int * order,
+	bool * sort_type) {
+	for (int i = 0; i < fields_count; i++) {
+		if (i == 0) {
+			int curField = order[i];
+			if(curField != -1)
+				for (int c = 1; c < size - 1; c++) {
+					for (int row = 1; row < size - 1; row++) {
+						if (((sort_type[i] == 1) &&
+							(strcmp(table[row][curField],table[row + 1][curField]) > 0)) ||
+							((sort_type[i] == 0) &&
+							(strcmp(table[row][curField], table[row + 1][curField]) < 0))) {
+							char ** buff = table[row];
+							table[row] = table[row + 1];
+							table[row + 1] = buff;
+						}
+					}
+				}
+		}
+		else {
+			int curField = order[i];
+			int prevField = order[i - 1];
+			if (curField != -1)
+				for (int c = 1; c < size - 1; c++) {
+					for (int row = 1; row < size - 1; row++) {
+						char * buf1 = table[row][prevField];
+						char * buf2 = table[row + 1][prevField];
+						if( (!strncmp(buf1,buf2,strlen(buf1))) && (strlen(buf1) == strlen(buf2)))
+							if (((sort_type[i] == 1) &&
+								(strcmp(table[row][curField], table[row + 1][curField]) > 0)) ||
+								((sort_type[i] == 0) &&
+								(strcmp(table[row][curField], table[row + 1][curField]) < 0))) {
+								char ** buff = table[row];
+								table[row] = table[row + 1];
+								table[row + 1] = buff;
+							}
+					}
+				}
+		}
+	}
+}
